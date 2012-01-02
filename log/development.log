@@ -468,3 +468,434 @@ ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
   
 
 Rendered /Users/circularpiecesofmusic/.rvm/gems/ruby-1.9.2-p290@instalist/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (0.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateLists (20120102180121)
+Migrating to DeviseCreateUsers (20120102180824)
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (12.4ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'lists'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (0.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+  [1m[36mColumns for index index_users_on_email on users (0.3ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16400
+ AND a.attnum IN (2)
+[0m
+  [1m[35mColumns for index index_users_on_reset_password_token on users (0.2ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16400
+ AND a.attnum IN (4)
+
+
+Started GET "/" for 127.0.0.1 at 2012-01-02 18:43:55 +0000
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (10.3ms)
+  [1m[36m (0.2ms)[0m  [1mSHOW search_path[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 200 OK in 186ms (Views: 176.2ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /scaffold.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /home.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /lists.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /lists.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:43:56 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2012-01-02 18:43:59 +0000
+
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+
+Rendered /Users/circularpiecesofmusic/.rvm/gems/ruby-1.9.2-p290@instalist/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/sign_out" for 127.0.0.1 at 2012-01-02 18:44:27 +0000
+
+ActionController::RoutingError (No route matches [GET] "/sign_out"):
+  
+
+Rendered /Users/circularpiecesofmusic/.rvm/gems/ruby-1.9.2-p290@instalist/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-01-02 18:45:42 +0000
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:45:42 +0000
+Served asset /home.css - 200 OK (1ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:45:42 +0000
+Served asset /lists.css - 200 OK (2ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:45:42 +0000
+Served asset /scaffold.css - 200 OK (11ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:45:43 +0000
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:45:43 +0000
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:45:43 +0000
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:45:43 +0000
+Served asset /home.js - 200 OK (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:45:43 +0000
+Served asset /lists.js - 200 OK (9ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:45:43 +0000
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+  Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 6ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.4ms)
+Rendered devise/sessions/new.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 39ms (Views: 20.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:46:14 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+  Processing by ListsController#index as HTML
+Completed 401 Unauthorized in 7ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (0.8ms)
+Rendered devise/sessions/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 29ms (Views: 11.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:30 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NjEA9dxfuvewxdgEfqvqTfpah/j+4H1+37VODEatEyE=", "user"=>{"email"=>"circularpiecesofmusic@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'circularpiecesofmusic@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2012-01-02 18:47:46.702656', "sign_in_count" = 2, "updated_at" = '2012-01-02 18:47:46.703348' WHERE "users"."id" = 1[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/lists
+Completed 302 Found in 188ms
+
+
+Started GET "/lists" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+  Processing by ListsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (0.5ms)[0m  SELECT "lists".* FROM "lists" 
+Rendered lists/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 51ms (Views: 7.5ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:46 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/lists/new" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+  Processing by ListsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered lists/_form.html.erb (6.5ms)
+Rendered lists/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 34ms (Views: 12.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:47:59 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+  Processing by ListsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NjEA9dxfuvewxdgEfqvqTfpah/j+4H1+37VODEatEyE=", "list"=>{"name"=>"Shopping List"}, "commit"=>"Create List"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (24.6ms)[0m  INSERT INTO "lists" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Mon, 02 Jan 2012 18:48:08 UTC +00:00], ["name", "Shopping List"], ["updated_at", Mon, 02 Jan 2012 18:48:08 UTC +00:00]]
+  [1m[36m (12.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/lists/1
+Completed 302 Found in 66ms
+
+
+Started GET "/lists/1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.5ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+Rendered lists/show.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 59ms (Views: 35.5ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:08 +0000
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2012-01-02 18:48:13 +0000
+  Processing by ListsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.3ms)[0m  [1mSELECT "lists".* FROM "lists" [0m
+Rendered lists/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 33ms (Views: 11.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-02 18:48:14 +0000
+Served asset /application.js - 304 Not Modified (0ms)
