@@ -10,12 +10,29 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+	
+	<fieldset>
+		
+  	<div class="field">
+    	<%= f.label :name %><br />
+    	<%= f.text_field :name %>
+  	</div>
+		
+		<ul>
+			<%= f.fields_for :items do |item| %>
+			  <li>  
+			    <%= item.label :content, "Item" %><br />  
+			    <%= item.text_field :content %>
+					<%= item.check_box :_destroy %>
+					<%= item.label :_destroy, "Remove item" %>
+			  </li>  
+			<% end %>
+		</ul>
+	
+	</fieldset>
+		
   <div class="actions">
     <%= f.submit %>
   </div>
+	
 <% end %>
