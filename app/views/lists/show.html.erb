@@ -5,6 +5,15 @@
   <%= @list.name %>
 </p>
 
+<% if @list.items %>
+	<ul>
+		<% @list.items.each do |item| %>
+			<li>
+		  	<%= item.content %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
 
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>

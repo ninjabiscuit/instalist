@@ -4498,3 +4498,1692 @@ Served asset /lists.js - 304 Not Modified (0ms)
   [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120102185610')
   [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120102180121')[0m
   [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120102180824')
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.2ms)[0m  [1mSET search_path TO public[0m
+  [1m[35m (112.9ms)[0m  DROP DATABASE IF EXISTS "instalist_test"
+  [1m[36m (0.1ms)[0m  [1mSET search_path TO public[0m
+  [1m[35m (346.9ms)[0m  CREATE DATABASE "instalist_test" ENCODING = 'unicode'
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (8.5ms)[0m  CREATE TABLE "items" ("id" serial primary key, "list_id" integer, "content" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "lists" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(128) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.0ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.8ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.6ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16527
+ AND a.attnum IN (2)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120102185610')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120102180121')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120102180824')
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mSET search_path TO public[0m
+  [1m[35m (116.0ms)[0m  DROP DATABASE IF EXISTS "instalist_test"
+  [1m[36m (0.1ms)[0m  [1mSET search_path TO public[0m
+  [1m[35m (466.4ms)[0m  CREATE DATABASE "instalist_test" ENCODING = 'unicode'
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (9.2ms)[0m  CREATE TABLE "items" ("id" serial primary key, "list_id" integer, "content" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "lists" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(128) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (2.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.9ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (1.0ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16567
+ AND a.attnum IN (2)
+  [1m[36m (1.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120102185610')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120102180121')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120102180824')
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-01-03 20:02:58 +0000
+  Processing by Devise::SessionsController#new as HTML
+  [1m[36m (0.2ms)[0m  [1mSHOW search_path[0m
+Rendered devise/shared/_links.erb (1.7ms)
+Rendered devise/sessions/new.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 305ms (Views: 201.9ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /home.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /scaffold.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /lists.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /underscore.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /backbone.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /instalist.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /lists/index.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /models/list.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /collections/lists.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /lists.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:02:59 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zP4S9F7dYCK+9IJAJBIofANs+9NdO5ttQFxjxcmV5do=", "user"=>{"email"=>"circularpiecesofmusic@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (37.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'circularpiecesofmusic@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.8ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2012-01-03 11:01:48.495817', "current_sign_in_at" = '2012-01-03 20:03:01.725520', "sign_in_count" = 5, "updated_at" = '2012-01-03 20:03:01.726199' WHERE "users"."id" = 1
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 321ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 41ms (Views: 21.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:01 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:02 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:02 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:02 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:02 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+  Processing by ListsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (14.1ms)[0m  SELECT "lists".* FROM "lists" 
+Rendered lists/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 67ms (Views: 31.7ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:08 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/lists/3/edit" for 127.0.0.1 at 2012-01-03 20:03:11 +0000
+  Processing by ListsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (12.3ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1  [["id", "3"]]
+  [1m[36mItem Load (16.0ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = 3[0m
+Rendered lists/_form.html.erb (123.4ms)
+Rendered lists/edit.html.erb within layouts/application (140.8ms)
+Completed 200 OK in 199ms (Views: 148.3ms | ActiveRecord: 33.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:12 +0000
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started PUT "/lists/3" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+  Processing by ListsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zP4S9F7dYCK+9IJAJBIofANs+9NdO5ttQFxjxcmV5do=", "list"=>{"name"=>"test list"}, "commit"=>"Update List", "id"=>"3"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/lists/3
+Completed 302 Found in 27ms
+
+
+Started GET "/lists/3" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+Rendered lists/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 52ms (Views: 30.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:14 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/lists/3/edit" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+  Processing by ListsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.1ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "3"]]
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = 3
+Rendered lists/_form.html.erb (9.6ms)
+Rendered lists/edit.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 69ms (Views: 18.5ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:16 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+  Processing by ListsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (0.3ms)[0m  SELECT "lists".* FROM "lists" 
+Rendered lists/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 67ms (Views: 15.5ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:21 +0000
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/lists/new" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+  Processing by ListsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered lists/_form.html.erb (3.4ms)
+Rendered lists/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 73ms (Views: 13.0ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:03:23 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2012-01-03 20:04:48 +0000
+  Processing by ListsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zP4S9F7dYCK+9IJAJBIofANs+9NdO5ttQFxjxcmV5do=", "list"=>{"name"=>"test list 2", "items_attributes"=>{"0"=>{"content"=>"first item", "_destroy"=>"0"}, "1"=>{"content"=>"second item", "_destroy"=>"0"}, "2"=>{"content"=>"", "_destroy"=>"0"}}}, "commit"=>"Create List"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (35.9ms)[0m  INSERT INTO "lists" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Tue, 03 Jan 2012 20:04:49 UTC +00:00], ["name", "test list 2"], ["updated_at", Tue, 03 Jan 2012 20:04:49 UTC +00:00]]
+  [1m[36mSQL (11.4ms)[0m  [1mINSERT INTO "items" ("content", "created_at", "list_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "first item"], ["created_at", Tue, 03 Jan 2012 20:04:49 UTC +00:00], ["list_id", 4], ["updated_at", Tue, 03 Jan 2012 20:04:49 UTC +00:00]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("content", "created_at", "list_id", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["content", "second item"], ["created_at", Tue, 03 Jan 2012 20:04:49 UTC +00:00], ["list_id", 4], ["updated_at", Tue, 03 Jan 2012 20:04:49 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/lists/4
+Completed 302 Found in 115ms
+
+
+Started GET "/lists/4" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+Rendered lists/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 34ms (Views: 12.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:49 +0000
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+  Processing by ListsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.3ms)[0m  [1mSELECT "lists".* FROM "lists" [0m
+Rendered lists/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 40ms (Views: 17.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:50 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:51 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:51 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:51 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/lists/4" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+Rendered lists/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 34ms (Views: 11.7ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:04:55 +0000
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/lists/4" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = 4
+Rendered lists/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 47ms (Views: 21.7ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:07:17 +0000
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/lists/4" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (0.2ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = 4[0m
+Rendered lists/show.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 73ms (Views: 20.1ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:08:05 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateLists (20120102180121)
+Migrating to DeviseCreateUsers (20120102180824)
+Migrating to CreateItems (20120102185610)
+Migrating to AddDoneToListItem (20120103201038)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (53.2ms)[0m  ALTER TABLE "items" ADD COLUMN "done" boolean
+  [1m[36m (38.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120103201038')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mSHOW search_path[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (18.1ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'items'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35m (0.7ms)[0m   SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'lists'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+  [1m[36m (0.7ms)[0m  [1m SELECT distinct i.relname, d.indisunique, d.indkey, t.oid
+ FROM pg_class t
+ INNER JOIN pg_index d ON t.oid = d.indrelid
+ INNER JOIN pg_class i ON d.indexrelid = i.oid
+ WHERE i.relkind = 'i'
+ AND d.indisprimary = 'f'
+ AND t.relname = 'users'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname = ANY (current_schemas(false)) )
+ ORDER BY i.relname
+[0m
+  [1m[35mColumns for index index_users_on_email on users (0.3ms)[0m   SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16400
+ AND a.attnum IN (2)
+  [1m[36mColumns for index index_users_on_reset_password_token on users (0.2ms)[0m  [1m SELECT a.attnum, a.attname
+ FROM pg_attribute a
+ WHERE a.attrelid = 16400
+ AND a.attnum IN (4)
+[0m
+
+
+Started GET "/lists/4/edit" for 127.0.0.1 at 2012-01-03 20:12:40 +0000
+  Processing by ListsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = 4
+Rendered lists/_form.html.erb (17.9ms)
+Rendered lists/edit.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 78ms (Views: 25.6ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:41 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/lists/4/edit" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+  Processing by ListsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (0.2ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = 4[0m
+Rendered lists/_form.html.erb (17.0ms)
+Rendered lists/edit.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 76ms (Views: 24.5ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:43 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:44 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started PUT "/lists/4" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+  Processing by ListsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zP4S9F7dYCK+9IJAJBIofANs+9NdO5ttQFxjxcmV5do=", "list"=>{"name"=>"test list 2", "items_attributes"=>{"0"=>{"done"=>"1", "content"=>"first item", "_destroy"=>"0", "id"=>"2"}, "1"=>{"done"=>"0", "content"=>"second item", "_destroy"=>"0", "id"=>"3"}}}, "commit"=>"Update List", "id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = 4 AND "items"."id" IN (2, 3)[0m
+  [1m[35m (0.3ms)[0m  UPDATE "items" SET "done" = 't', "updated_at" = '2012-01-03 20:12:49.658059' WHERE "items"."id" = 2
+  [1m[36m (0.3ms)[0m  [1mUPDATE "items" SET "done" = 'f', "updated_at" = '2012-01-03 20:12:49.659257' WHERE "items"."id" = 3[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/lists/4
+Completed 302 Found in 71ms
+
+
+Started GET "/lists/4" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (0.2ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = 4[0m
+Rendered lists/show.html.erb within layouts/application (40.4ms)
+Completed 200 OK in 72ms (Views: 46.8ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:49 +0000
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/lists/4/edit" for 127.0.0.1 at 2012-01-03 20:12:51 +0000
+  Processing by ListsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = 4
+Rendered lists/_form.html.erb (44.6ms)
+Rendered lists/edit.html.erb within layouts/application (46.0ms)
+Completed 200 OK in 76ms (Views: 52.2ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:52 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started PUT "/lists/4" for 127.0.0.1 at 2012-01-03 20:12:58 +0000
+  Processing by ListsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zP4S9F7dYCK+9IJAJBIofANs+9NdO5ttQFxjxcmV5do=", "list"=>{"name"=>"test list 2", "items_attributes"=>{"0"=>{"done"=>"0", "content"=>"first item", "_destroy"=>"0", "id"=>"2"}, "1"=>{"done"=>"1", "content"=>"second item", "_destroy"=>"0", "id"=>"3"}}}, "commit"=>"Update List", "id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (0.2ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = 4 AND "items"."id" IN (2, 3)
+  [1m[36m (0.4ms)[0m  [1mUPDATE "items" SET "done" = 'f', "updated_at" = '2012-01-03 20:12:58.972907' WHERE "items"."id" = 2[0m
+  [1m[35m (0.4ms)[0m  UPDATE "items" SET "done" = 't', "updated_at" = '2012-01-03 20:12:58.974347' WHERE "items"."id" = 3
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/lists/4
+Completed 302 Found in 71ms
+
+
+Started GET "/lists/4" for 127.0.0.1 at 2012-01-03 20:12:58 +0000
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items" WHERE "items"."list_id" = 4
+Rendered lists/show.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 44ms (Views: 19.9ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:12:59 +0000
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/lists/4/edit" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+  Processing by ListsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mList Load (0.2ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."list_id" = 4[0m
+Rendered lists/_form.html.erb (16.7ms)
+Rendered lists/edit.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 49ms (Views: 24.8ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.css?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /lists.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /underscore.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/backbone.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /backbone.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/instalist.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /instalist.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists/index.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /lists/index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/models/list.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /models/list.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/collections/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /collections/lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views/lists/lists_index.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /views/lists/lists_index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/routers/lists_router.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /routers/lists_router.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lists.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /lists.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-03 20:13:00 +0000
+Served asset /application.js - 304 Not Modified (2ms)

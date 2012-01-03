@@ -20,7 +20,8 @@
 		
 		<ul>
 			<%= f.fields_for :items do |item| %>
-			  <li>  
+			  <li>
+				  <%= item.check_box :done %>
 			    <%= item.label :content, "Item" %><br />  
 			    <%= item.text_field :content %>
 					<%= item.check_box :_destroy %>
