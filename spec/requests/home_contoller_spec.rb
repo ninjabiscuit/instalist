@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Not Logged In To Application" do
+describe HomeController do
   describe "GET /" do
     it "Redirects to sign in" do
       get root_path
@@ -9,7 +9,7 @@ describe "Not Logged In To Application" do
   end
 end
 
-describe "Logged In To Application" do
+describe HomeController do
   
   login_user
   
